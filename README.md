@@ -90,7 +90,6 @@ CPU timing uses `time.process_time`. Each batch is calibrated to at least 0.2 CP
 | `selected_settings.csv` | Table 2 times, attained errors, target status and selected settings |
 | `all_settings.csv` | Every tested setting |
 | `*_raw.json` | Five CPU batch averages and batch sizes |
-| `*_reference.json` | Independent-reference checks |
 | `verification.json` | Kernel and quadrature refinement checks |
 | `environment.json` | Hardware/software and benchmark settings |
 
