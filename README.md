@@ -1,6 +1,6 @@
 # ODEs for arbitrary stage duration distributions
 
-Research code accompanying the manuscript by Cihan Cai, Qiong Li and Yijun Lou, submitted to *Journal of the Royal Society Interface*.
+Research code accompanying the manuscript by Cihan Cai, Qiong Li and Yijun Lou，ODEs-for-Arbitrary-Stage-Duration-Distributions.
 
 ## Installation
 
