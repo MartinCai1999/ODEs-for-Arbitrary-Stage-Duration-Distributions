@@ -73,7 +73,7 @@ python benchmark.py
 python Summarize_benchmark.py
 ```
 
-The four forward methods use the same fitted kernel on `[0,60]`. Errors are evaluated at 601 common times relative to a tightly solved branch ODE, checked against RK45 and direct quadrature. The first setting attaining each target, 0.001 or 0.00001, is retained. `met_tolerance` records whether the target was attained within the tested list.
+The four computation methods use the same fitted kernel on `[0,60]`. Errors are evaluated at 601 common times relative to a tightly solved branch ODE, checked against RK45 and direct quadrature. 
 
 CPU timing uses `time.process_time`. Five per-solve batch averages give the reported median. 
 
@@ -85,12 +85,10 @@ CPU timing uses `time.process_time`. Five per-solve batch averages give the repo
 | `verification.json` | Kernel and quadrature refinement checks |
 | `environment.json` | Software and benchmark settings |
 
-Fitting is a separate preprocessing stage. The supplied `results/<distribution>/numba_cpu_runs.json` records the individual EM runs underlying the manuscript's fitting CPU totals. 
-
-The common fitted kernel isolates the forward-solution comparison. The shared kernel and any reusable setup can be retained for repeated calculations at fixed duration parameters.
+Fitting is a separate preprocessing stage. The supplied `results/<distribution>/numba_cpu_runs.json` records the individual EM runs underlying the manuscript's fitting CPU totals. The shared kernel and any reusable setup can be retained for repeated calculations at fixed duration parameters.
 
 ## Data provenance and license
 
-The duration records are the 268 observations in the `Main analysis` sheet of `data/hunan_incubation/data_Table_S3.xlsx`, released with [Hu et al. (2021)](https://doi.org/10.1038/s41467-021-21710-6). The original [repository](https://github.com/KristyWang/Cluster_Hunan), pinned commit, filenames and SHA-256 hashes are recorded in `data/hunan_incubation/provenance.json`. The package includes the source R analysis and original summary output for provenance; running this Python workflow requires only the listed Python packages. `read_intervals` extracts the numerical bounds directly from the workbook using the Python standard library.
+The duration records are the 268 observations in the `Main analysis` sheet of `data/hunan_incubation/data_Table_S3.xlsx`, released with [Hu et al. (2021)](https://doi.org/10.1038/s41467-021-21710-6). The original [repository](https://github.com/KristyWang/Cluster_Hunan), pinned commit, filenames and SHA-256 hashes are recorded in `data/hunan_incubation/provenance.json`. 
 
 Research software is covered by `LICENSE` (MIT). Third-party data and source materials retain their original attribution and terms, as described in `DATA_SOURCES.md`.
