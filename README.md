@@ -64,7 +64,7 @@ Then run the plotting and reporting commands above. Synthetic samples contain 10
 
 All exact-observation fits compare `L = 3, 5, 10, 20, 50, 100`, with shapes `1,...,L` and one common rate. Each candidate uses six deterministic starts: five uniform-weight starts and one shape-bin start. The latter combines 95% bin frequencies and 5% uniform weights. Stopping checks likelihood, rate and weights for five consecutive iterations. Each start allows 6,000 iterations; the best unfinished start receives up to 20,000 additional iterations. 
 
-The interval-data example uses the same initialization formulas applied to upper bounds, six starts per candidate, 30,000 initial iterations and the same continuation rule. It selects `L=3`; the Weibull comparator is independently estimated from the same observations. See ESM Section S3.
+The interval-data example uses the same initialization formulas applied to upper bounds, six starts per candidate, 30,000 initial iterations and the same continuation rule. 
 
 ## CPU timing and supplementary numerical outputs
 
@@ -75,7 +75,7 @@ python Summarize_benchmark.py
 
 The four forward methods use the same fitted kernel on `[0,60]`. Errors are evaluated at 601 common times relative to a tightly solved branch ODE, checked against RK45 and direct quadrature. The first setting attaining each target, 0.001 or 0.00001, is retained. `met_tolerance` records whether the target was attained within the tested list.
 
-CPU timing uses `time.process_time`. Each batch is calibrated to at least 0.2 CPU seconds. Five per-solve batch averages give the reported median. Timed work includes solver setup, kernel evaluation, integration and output interpolation. Reference construction, error assessment and file writing occur outside these batches.
+CPU timing uses `time.process_time`. Five per-solve batch averages give the reported median. 
 
 | Supplementary result file under `results/benchmark/` | Contents |
 |---|---|
@@ -83,9 +83,9 @@ CPU timing uses `time.process_time`. Each batch is calibrated to at least 0.2 CP
 | `all_settings.csv` | Every tested setting |
 | `*_raw.json` | Five CPU batch averages and batch sizes |
 | `verification.json` | Kernel and quadrature refinement checks |
-| `environment.json` | Hardware/software and benchmark settings |
+| `environment.json` | Software and benchmark settings |
 
-Fitting is a separate preprocessing stage. The supplied `results/<distribution>/numba_cpu_runs.json` records the individual EM runs underlying the manuscript's fitting CPU totals. These totals sum calls to the EM routine, including the first call's compilation or cache loading, and exclude file writes. The regular fitting entry scripts time the full multistart calls, also including initialization and progress output. Their rerun costs therefore have a slightly broader boundary. Forward-solver timings are measured separately. New timings depend on the machine and execution environment.
+Fitting is a separate preprocessing stage. The supplied `results/<distribution>/numba_cpu_runs.json` records the individual EM runs underlying the manuscript's fitting CPU totals. 
 
 The common fitted kernel isolates the forward-solution comparison. The shared kernel and any reusable setup can be retained for repeated calculations at fixed duration parameters.
 
