@@ -10,14 +10,6 @@ Tested with Python 3.13.12, NumPy 2.4.3, SciPy 1.17.1, Matplotlib 3.10.8 and Num
 python -m pip install -r requirements.txt
 ```
 
-For comparable CPU measurements, set numerical libraries to one thread before starting Python. In PowerShell:
-
-```powershell
-$env:OPENBLAS_NUM_THREADS = '1'
-$env:OMP_NUM_THREADS = '1'
-$env:MKL_NUM_THREADS = '1'
-```
-
 Scripts locate data relative to their own directory. Run the commands below from this `code` directory. Outputs are saved in `results/` and `figures/`; rerunning a script replaces its corresponding outputs. Keep a copy of the supplied results when comparing a new run with the manuscript.
 
 ## Experiments and entry scripts
@@ -68,9 +60,9 @@ python Fit_sensitivity_normal.py
 python Hunan_incubation.py
 ```
 
-Then run the plotting and reporting commands above. Synthetic samples contain 10,000 observations each, generated with seeds 9901, 9902, 9903, 9904 and 999 for lognormal, Weibull, normal mixture, normal–lognormal and sensitivity normal, respectively. Their distribution parameters are defined in `study.parts` and described in Figure 3 and Experiment 4. Supplied CSV files preserve the actual samples used. `target_sf` applies positive-support normalization to the survival function, while `target_cdf` follows the generating CDF on nonnegative times. These conventions reproduce the submitted results.
+Then run the plotting and reporting commands above. Synthetic samples contain 10,000 observations each, generated with seeds 9901, 9902, 9903, 9904 and 999 for lognormal, Weibull, normal mixture, normal–lognormal and sensitivity normal, respectively. Their distribution parameters are defined in `study.parts` and described in Figure 3 and Experiment 4. Supplied CSV files preserve the actual samples used. 
 
-All exact-observation fits compare `L = 3, 5, 10, 20, 50, 100`, with shapes `1,...,L` and one common rate. Each candidate uses six deterministic starts: five uniform-weight starts and one shape-bin start. The latter combines 95% bin frequencies and 5% uniform weights. Stopping checks likelihood, rate and weights for five consecutive iterations. Each start allows 6,000 iterations; the best unfinished start receives up to 20,000 additional iterations. BIC uses `L` free parameters. The selected values for Figure 3 are 50, 5, 50 and 50; the sensitivity example selects 50.
+All exact-observation fits compare `L = 3, 5, 10, 20, 50, 100`, with shapes `1,...,L` and one common rate. Each candidate uses six deterministic starts: five uniform-weight starts and one shape-bin start. The latter combines 95% bin frequencies and 5% uniform weights. Stopping checks likelihood, rate and weights for five consecutive iterations. Each start allows 6,000 iterations; the best unfinished start receives up to 20,000 additional iterations. 
 
 The interval-data example uses the same initialization formulas applied to upper bounds, six starts per candidate, 30,000 initial iterations and the same continuation rule. It selects `L=3`; the Weibull comparator is independently estimated from the same observations. See ESM Section S3.
 
