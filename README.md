@@ -36,7 +36,6 @@ Shared routines are in `em_core.py` (EM and distribution functions), `study.py` 
 The package contains saved fitted parameters and numerical outputs. Plotting and forward-solution scripts read these files. To reconstruct Figures 3–7 without repeating parameter estimation:
 
 ```text
-python Replot_Fig3.py
 python Fig4_ODE_Vol.py
 python 3d_KM_St.py
 python 3d_KM_It.py
